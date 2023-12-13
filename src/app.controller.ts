@@ -30,9 +30,18 @@ export class AppController {
     schema: {
       type: 'object',
       properties: {
-        username: { type: 'string' },
+        username: { type: 'string'},
         password: { type: 'string' },
         balance: { type: 'number' },
+        kindAccount: { type: 'string' },
+        agency: { type: 'string' },
+      },
+      example: {
+        username: 'yourname',
+        password: 'your password',
+        balance: 0,
+        kindAccount: 'savings ou current',
+        agency: 'string',
       },
     },
   })

@@ -41,7 +41,6 @@ export class UsersService {
   }
 
   async create(user: User): Promise<User> {
-    console.log('create method called with:', user);
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(user.password, saltRounds);
 

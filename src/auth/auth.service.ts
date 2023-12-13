@@ -181,4 +181,31 @@ export class AuthService {
       throw error;
     }
   }
+
+  async deleteUserByAccountNumber(accountNumber: string, password: string) {
+    try {
+      // Encontre o usuário
+      const user = await this.usersService.findOne(accountNumber);
+
+      // Verifique se o usuário existe
+      if (!user) {
+        throw new NotFoundException('Conta não encontrada');
+      }
+
+      // Verifique a senha
+      const pass = await bcrypt.compare(password, user.password);
+      if (!pass) {
+        throw new BadRequestException('Senha Inválida');
+      }
+
+      // Exclua o usuário
+      await this.usersService.deleteByAccountNumber(accountNumber, password);
+
+      // Como as transações agora estão incorporadas no esquema do usuário,
+      // elas serão excluídas automaticamente ao excluir o usuário.
+    } catch (error) {
+      console.error('Erro durante a exclusão do usuário:', error);
+      throw error;
+    }
+  }
 }

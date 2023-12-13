@@ -11,9 +11,7 @@ import { ConfigModule } from '@nestjs/config';
     UsersModule,
     ConfigModule.forRoot(),
     AuthModule,
-    MongooseModule.forRoot(
-      'mongodb+srv://brandorocha00:rv2mWMjqE7NqSXR4@clusterbank.znvdhe5.mongodb.net/?retryWrites=true&w=majority', 
-    ),
+    MongooseModule.forRoot(process.env.MONGO_URI),
   ],
   controllers: [AppController],
   providers: [AppService],

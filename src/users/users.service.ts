@@ -109,4 +109,26 @@ export class UsersService {
     }
   }
 
+  async deleteByAccountNumber(
+    accountNumber: string,
+    password: string,
+  ): Promise<void> {
+    try {
+      const user = await this.userModel.findOne({ accountNumber }).exec();
+
+      if (!user) {
+        throw new NotFoundException('Conta não encontrada');
+      }
+
+      const pass = await bcrypt.compare(password, user.password);
+      if (!pass) {
+        throw new BadRequestException('Senha Inválida');
+      }
+
+      return await this.userModel.findOneAndDelete({ accountNumber})
+    } catch (error) {
+      console.error('Erro durante a exclusão do usuário:', error);
+      throw error;
+    }
+  }
 }

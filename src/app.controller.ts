@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { UsersService } from './users/users.service';
 import { Response } from 'express';
+import { ApiBody, ApiTags, ApiOperation } from '@nestjs/swagger';
 
 export type User = {
   username: string;
@@ -10,6 +11,7 @@ export type User = {
 };
 
 @Controller()
+@ApiTags('Público') // Decorador para agrupar as operações no Swagger
 export class AppController {
   constructor(
     private readonly appService: AppService,
@@ -17,11 +19,23 @@ export class AppController {
   ) {}
 
   @Get()
+  @ApiOperation({ summary: 'Receber uma saudação' })
   getHello(): string {
     return this.appService.getHello();
   }
 
   @Post('register')
+  @ApiOperation({ summary: 'Criar uma conta' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        username: { type: 'string' },
+        password: { type: 'string' },
+        balance: { type: 'number' },
+      },
+    },
+  })
   async register(
     @Body() user: { username: string; password: string; balance: number },
     @Res() res: Response,

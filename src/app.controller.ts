@@ -11,7 +11,7 @@ export type User = {
 };
 
 @Controller()
-@ApiTags('Público') // Decorador para agrupar as operações no Swagger
+@ApiTags('Público')
 export class AppController {
   constructor(
     private readonly appService: AppService,

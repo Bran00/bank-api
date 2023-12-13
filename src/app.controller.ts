@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { UsersService } from './users/users.service';
+import { Response } from 'express';
 
 export type User = {
   username: string;
@@ -22,8 +23,10 @@ export class AppController {
 
   @Post('register')
   async register(
-    @Body() user: { username: string; password: string; balance: number},
-  ): Promise<void> {
-    await this.usersService.create(user);
+    @Body() user: { username: string; password: string; balance: number },
+    @Res() res: Response,
+  ) {
+    const userCreated = await this.usersService.create(user);
+    return res.json({ userCreated });
   }
 }

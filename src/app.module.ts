@@ -15,7 +15,7 @@ import { jwtConstants } from './auth/constants';
     ConfigModule.forRoot(),
     AuthModule,
     MongooseModule.forRoot(
-      'mongodb+srv://brandorocha00:rv2mWMjqE7NqSXR4@clusterbank.znvdhe5.mongodb.net/?retryWrites=true&w=majority',
+      'mongodb+srv://brandorocha00:rv2mWMjqE7NqSXR4@clusterbank.znvdhe5.mongodb.net/?retryWrites=true&w=majority', 
     ),
   ],
   controllers: [AppController],

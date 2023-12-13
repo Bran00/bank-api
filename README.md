@@ -2,9 +2,7 @@
 
 A Banco da Gente API é uma aplicação construída usando NestJS para simular operações bancárias simples. Ela utiliza MongoDB como banco de dados, JWT para autenticação, Swagger para documentação da API, e outras tecnologias modernas.
 
-## Assista aqui como usar a API
-
-[Link para o vídeo](https://www.loom.com/share/122fe3f633a74e1b98eebb2639c6cf84?sid=2a04b6a5-102c-429e-b863-0a36e3b01090){:target="_blank"}
+## [Assista aqui como usar a API](https://www.loom.com/share/122fe3f633a74e1b98eebb2639c6cf84?sid=2a04b6a5-102c-429e-b863-0a36e3b01090) - Abra em uma nova aba
 
 ## Tecnologias Utilizadas
 
